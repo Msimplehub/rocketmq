@@ -221,6 +221,7 @@ public class MQClientInstance {
         return mqList;
     }
 
+    //[Abbysun]: Rocket mq Customer start 
     public void start() throws MQClientException {
 
         synchronized (this) {

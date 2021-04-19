@@ -286,7 +286,7 @@ public class DefaultMQPullConsumer extends ClientConfig implements MQPullConsume
     }
 
     @Override
-    public Set<MessageQueue> fetchSubscribeMessageQueues(String topic) throws MQClientException {
+    public Set<MessageQueue>  fetchSubscribeMessageQueues(String topic) throws MQClientException {
         return this.defaultMQPullConsumerImpl.fetchSubscribeMessageQueues(withNamespace(topic));
     }
 

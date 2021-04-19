@@ -42,6 +42,10 @@ public abstract class ServiceThread implements Runnable {
 
     public abstract String getServiceName();
 
+    public void shutdown() {
+        this.shutdown(false);
+    }
+
     public void start() {
         log.info("Try to start service thread:{} started:{} lastThread:{}", getServiceName(), started.get(), thread);
         if (!started.compareAndSet(false, true)) {
@@ -51,10 +55,6 @@ public abstract class ServiceThread implements Runnable {
         this.thread = new Thread(this, getServiceName());
         this.thread.setDaemon(isDaemon);
         this.thread.start();
-    }
-
-    public void shutdown() {
-        this.shutdown(false);
     }
 
     public void shutdown(final boolean interrupt) {

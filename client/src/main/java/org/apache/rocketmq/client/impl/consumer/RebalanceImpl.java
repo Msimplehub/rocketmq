@@ -255,6 +255,7 @@ public abstract class RebalanceImpl {
                 break;
             }
             case CLUSTERING: {
+                //[Abbysun]:保证同一个队列不会分配2个不同的customer，这样就保证了一个队列上的消息只会被一个消费者消费
                 Set<MessageQueue> mqSet = this.topicSubscribeInfoTable.get(topic);
                 List<String> cidAll = this.mQClientFactory.findConsumerIdList(topic, consumerGroup);
                 if (null == mqSet) {

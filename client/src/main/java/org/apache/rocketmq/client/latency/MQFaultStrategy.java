@@ -56,6 +56,7 @@ public class MQFaultStrategy {
     }
 
     public MessageQueue selectOneMessageQueue(final TopicPublishInfo tpInfo, final String lastBrokerName) {
+
         if (this.sendLatencyFaultEnable) {
             try {
                 int index = tpInfo.getSendWhichQueue().getAndIncrement();
@@ -86,7 +87,6 @@ public class MQFaultStrategy {
 
             return tpInfo.selectOneMessageQueue();
         }
-
         return tpInfo.selectOneMessageQueue(lastBrokerName);
     }
 
